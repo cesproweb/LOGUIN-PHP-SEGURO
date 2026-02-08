@@ -1,4 +1,13 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+    header("Location: dashboard.php");
+    exit;
+}
+
+require_once 'includes/functions.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,10 +19,12 @@
 <body>
   <div class="login-container">
     <h2>Iniciar Sesión</h2>
+
     <?php if (isset($_SESSION['error'])): ?>
-      <p class="error"><?= $_SESSION['error'] ?></p>
+      <p class="error"><?= htmlspecialchars($_SESSION['error']) ?></p>
       <?php unset($_SESSION['error']); ?>
     <?php endif; ?>
+
     <form action="procesar_login.php" method="POST">
       <input type="text" name="username" placeholder="Usuario" required>
       <input type="password" name="password" placeholder="Contraseña" required>

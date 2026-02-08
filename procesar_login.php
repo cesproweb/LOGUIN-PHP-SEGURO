@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'includes/functions.php';
 
 $username = $_POST['username'] ?? '';
@@ -19,10 +20,21 @@ if ($user['locked']) {
 }
 
 if (password_verify($password, $user['password'])) {
+
     resetAttempts($username);
-    $_SESSION['user'] = $user['username'];
+
+    global $pdo;
+    $pdo->prepare("UPDATE users SET logged_in = 1 WHERE username = ?")->execute([$username]);
+
+    $_SESSION['user_id']  = $user['id'];
+    $_SESSION['username'] = $user['username'];
+    $_SESSION['role']     = $user['role'];
+
     header("Location: dashboard.php");
+    exit;
+
 } else {
+
     incrementAttempts($username);
     $attempts = $user['attempts'] + 1;
 
@@ -30,11 +42,11 @@ if (password_verify($password, $user['password'])) {
         lockAccount($username);
         $_SESSION['error'] = "Cuenta bloqueada.";
     } elseif ($attempts == 4) {
-        $_SESSION['error'] = "Atención: Último intento antes del bloqueo.";
+        $_SESSION['error'] = "Atención: último intento antes del bloqueo.";
     } else {
         $_SESSION['error'] = "Contraseña incorrecta.";
     }
 
     header("Location: login.php");
+    exit;
 }
-?>

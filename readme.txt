@@ -13,4 +13,4 @@ Es solo la primera versión de este login obviamente no es la definitiva pues se
 
 El usuario por defecto es admin y la contraseña 1234556
 
-para que funcione previamente hay que generar la contraseña con password_hash (archivo test.php) y la variable que noes de es la cohtraseña hasheada que habria que colocarla mediante phpmyadmin
+para que funcione previamente hay que generar la contraseña con password_hash (archivo test.php) y la variable que no es de es la cohtraseña hasheada que habria que colocarla mediante phpmyadmin
