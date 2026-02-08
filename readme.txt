@@ -1,16 +1,51 @@
 :::: ESPAÑOL ::::
 
-Loguin en php con las siguientes caracteristicas:
+# LOGIN SEGURO EN PHP (CON ROLES Y PANEL DE ADMINISTRACIÓN)
 
-Controla el número de intentos fallidos con contraseña al quinto intento por seguridad se bloquea. Si antes de llegar al quinto intento introduce la contraseña correcta, el contador de intentos se reseta y se pone a 0
-Las contraseñasa estan generadas mediaste 'password_hash'
-Es responsive, una vez que introduce la contraseña te lleva a otra pantalla (un index) donde te da la bienvenida con el nombre de usuario que se ha logado y aparece arriba un menu con un logout
+Este proyecto implementa un sistema de autenticación en PHP con enfoque en seguridad, gestión de roles y administración de usuarios.  
+Es una versión completamente mejorada respecto a la inicial, con nuevas funciones, mejor estructura y un panel de administración más completo.
+
+---
+
+## ✔️ FUNCIONALIDADES PRINCIPALES
+
+### 🔐 1. Login seguro con PHP y MySQL
+- Las contraseñas se almacenan usando `password_hash()`.
+- La verificación se realiza con `password_verify()`.
+- Se controla el número de intentos fallidos:
+  - A los **5 intentos fallidos**, la cuenta se bloquea automáticamente.
+  - Si el usuario acierta antes del quinto intento, el contador se reinicia a 0.
+
+### 👤 2. Gestión de roles
+El sistema soporta dos roles:
+- **admin**
+- **user**
+
+El rol se almacena en la base de datos en el campo `role`.
+
+Dependiendo del rol:
+- Los usuarios normales acceden solo al dashboard.
+- Los administradores acceden al panel de administración.
+
+### 🧭 3. Dashboard con menú dinámico
+Una vez logado:
+- Se muestra un mensaje de bienvenida con el nombre del usuario.
+- El menú superior cambia según el rol:
+  - Si es **admin**, aparece el enlace al panel de administración.
+  - Si es **user**, solo aparece el menú básico.
+
+### 🛠️ 4. Panel de administración (solo para admin)
+Incluye:
+- Crear nuevos usuarios (con rol admin o user).
+- Cambiar contraseñas.
+- Ver usuarios bloqueados y desbloquearlos.
+- Ver usuarios conectados y forzar su logout.
+- Menú superior con opción de cerrar sesión.
+
+Todo sin JavaScript, solo PHP + CSS.
+
+---
+
+## ✔️ ESTRUCTURA DEL PROYECTO
 
 
-Existe la pantalla 'Crearsuario.php' en donde automaticamente se generan los usuarios mediante 'password_hash'
-
-Es solo la primera versión de este login obviamente no es la definitiva pues se podrian crear usuarios sin estar logados y entrar en el sistema. 
-
-El usuario por defecto es admin y la contraseña 1234556
-
-para que funcione previamente hay que generar la contraseña con password_hash (archivo test.php) y la variable que no es de es la cohtraseña hasheada que habria que colocarla mediante phpmyadmin
