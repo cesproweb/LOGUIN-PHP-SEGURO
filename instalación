@@ -1,0 +1,24 @@
+# 📘 Manual de Instalación — Login Seguro en PHP
+
+Este documento explica cómo instalar y configurar el sistema de login seguro en un entorno local utilizando XAMPP o cualquier servidor compatible con PHP y MySQL.
+
+---
+
+## 🧩 1. Requisitos previos
+
+Antes de comenzar, asegúrate de tener instalado:
+
+- **PHP 8 o superior**
+- **MySQL / MariaDB**
+- **XAMPP, WAMP o similar**
+- **Navegador web moderno**
+- **Git (opcional, si usas GitHub)**
+
+---
+
+## 📁 2. Descargar o clonar el proyecto
+
+### Opción A — Descargar ZIP desde GitHub
+1. Entra en tu repositorio GitHub.
+2. Pulsa en **Code → Download ZIP**.
+3. Extrae el contenido en:
