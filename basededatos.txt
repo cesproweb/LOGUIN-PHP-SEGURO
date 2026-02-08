@@ -1,0 +1,56 @@
+
+---
+
+## ✔️ BASE DE DATOS
+
+La tabla `users` debe contener al menos:
+
+- id (INT, PK, AI)
+- username (VARCHAR)
+- password (VARCHAR)
+- role (VARCHAR)  ← IMPORTANTE
+- attempts (INT)
+- locked (TINYINT)
+- logged_in (TINYINT)
+
+Ejemplo de usuario por defecto:
+
+- Usuario: **admin**
+- Contraseña: **123456** (debe insertarse hasheada con `password_hash()`)
+
+---
+
+## ✔️ SEGURIDAD IMPLEMENTADA
+
+- Contraseñas hasheadas.
+- Control de intentos fallidos.
+- Bloqueo automático de cuentas.
+- Reinicio de intentos al acertar.
+- Sesiones protegidas.
+- Roles con permisos diferenciados.
+- Panel admin accesible solo para administradores.
+
+---
+
+## ✔️ REQUISITOS
+
+- PHP 8+
+- MySQL
+- XAMPP, WAMP o similar
+- Navegador moderno
+
+---
+
+## ✔️ NOTAS
+
+Esta versión es mucho más completa que la inicial.  
+Incluye roles, panel de administración, menú dinámico y mejoras visuales en CSS.
+
+El proyecto está preparado para seguir creciendo:
+- Logs de actividad
+- Recuperación de contraseña
+- Auditoría de accesos
+- API REST
+- JWT
+- etc.
+
