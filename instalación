@@ -22,3 +22,67 @@ Antes de comenzar, asegúrate de tener instalado:
 1. Entra en tu repositorio GitHub.
 2. Pulsa en **Code → Download ZIP**.
 3. Extrae el contenido en:
+C:\xampp\htdocs\
+
+
+### Opción B — Clonar con Git
+cd C:\xampp\htdocs\
+git clone https://github.com/TU_USUARIO/LOGUIN-PHP-SEGURO.git (github.com in Bing)
+
+---
+
+## 🗄️ 3. Crear la base de datos
+
+1. Abre **phpMyAdmin** desde XAMPP.
+2. Crea una base de datos llamada:
+
+login_seguro
+3. Crea la tabla `users` con esta estructura:
+
+```sql
+CREATE TABLE users (
+id INT AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(50) NOT NULL,
+password VARCHAR(255) NOT NULL,
+role VARCHAR(20) NOT NULL,
+attempts INT DEFAULT 0,
+locked TINYINT(1) DEFAULT 0,
+logged_in TINYINT(1) DEFAULT 0
+);
+
+🔐 4. Crear un usuario administrador
+Genera una contraseña hasheada con PHP:
+
+<?php
+echo password_hash("123456", PASSWORD_DEFAULT);
+ 1.Copia el hash generado.
+ 2. Inserta el usuario en la base de datos:
+INSERT INTO users (username, password, role)
+VALUES ('admin', 'AQUÍ_TU_HASH', 'admin');
+⚙️ 5. Configurar la conexión a la base de datos
+Edita el archivo:
+/includes/db.php
+Debe contener:
+$pdo = new PDO("mysql:host=localhost;dbname=login_seguro;charset=utf8", "root", "");
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+Si usas otra contraseña o usuario, cámbialo aquí.
+▶️ 6. Ejecutar el proyecto
+Inicia Apache y MySQL desde XAMPP.
+
+Abre en el navegador:
+http://localhost/LOGUIN-PHP-SEGURO/login.php
+Inicia sesión con:
+
+Usuario: admin
+
+Contraseña: 123456
+🎉 7. Instalación completada
+El sistema ya está listo para usarse:
+
+Dashboard dinámico según rol
+
+Panel de administración
+
+Gestión de usuarios
+
+Seguridad integrada
